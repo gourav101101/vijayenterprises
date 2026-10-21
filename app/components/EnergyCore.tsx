@@ -34,13 +34,13 @@ void main(){
  vec3 rd=normalize(uv.x*uu+uv.y*vv+1.65*ww);
  float t=0.;vec2 hit=vec2(0.);bool found=false;
  for(int i=0;i<88;i++){hit=map(ro+rd*t);if(hit.x<.002){found=true;break;}t+=hit.x*.8;if(t>14.)break;}
- vec3 bg=vec3(.038,.043,.040); vec3 color=bg;
+ vec3 bg=pow(vec3(.98,.976,.961),vec3(1./.85)); vec3 color=bg;
  if(found){vec3 p=ro+rd*t;vec3 n=normal(p);vec3 v=-rd;
   vec3 l=normalize(vec3(-3.,6.,5.));vec3 l2=normalize(vec3(4.,2.,-3.));
   float diff=max(dot(n,l),0.);float diff2=max(dot(n,l2),0.);float fres=pow(1.-max(dot(n,v),0.),3.);
   float spec=pow(max(dot(n,normalize(l+v)),0.),55.);float spec2=pow(max(dot(n,normalize(l2+v)),0.),28.);
   float ao=clamp(map(p+n*.2).x/.2,.25,1.);
-  vec3 steel=vec3(.27,.285,.26);color=steel*(.20+diff*.70+diff2*.22)*ao;
+  vec3 steel=vec3(.66,.69,.67);color=steel*(.48+diff*.50+diff2*.20)*ao;
   color+=vec3(.78,.86,.75)*spec*.8+vec3(1.,.43,.10)*spec2*.9+fres*vec3(.20,.24,.20);
   float grain=fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);color+=grain*.012;
   if(hit.y>1.5&&hit.y<2.5){color=vec3(1.,.34+.03*mode,.035)*(.8+.25*sin(time+p.y*3.));}
@@ -48,7 +48,7 @@ void main(){
   if(hit.y>3.5)color=vec3(.055,.06,.055)*(.3+diff)+vec3(.7,.8,.6)*spec*.3;
   color=mix(color,bg,clamp((t-7.)*.035,0.,.15));
  }
- float glow=exp(-length(uv-vec2(0.,-.03))*5.);color+=vec3(.18,.06,.008)*glow*.14;
+ float glow=exp(-length(uv-vec2(0.,-.03))*5.);color+=vec3(.04,.015,0.)*glow*.08;
  color=pow(color,vec3(.85));gl_FragColor=vec4(color,1.);
 }`;
 export default function EnergyCore({ mode=0 }: { mode?:number }) {
