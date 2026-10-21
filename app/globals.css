@@ -67,3 +67,5 @@ body{font-size:17px}
 .service-card{min-height:470px}.nav{gap:24px}.nav .nav-cta{margin-left:10px}
 @media(max-width:1100px){.nav{gap:15px;font-size:15px}.nav .nav-cta{padding:12px}}
 @media(max-width:760px){.hero{min-height:1060px}.hero .eyebrow{max-width:300px;font-size:12px}.hero .button,.hero-explore,.hero-copy p,.section-heading>p,.intro-bottom p,.statement p,.form-mode button{font-size:16px}.hero-bottom{font-size:12px;max-width:300px}.scene-coordinate,.scene-caption,.motion-control{font-size:12px}.service-card{min-height:0}.form-mode{flex-wrap:wrap}.footer-links{gap:20px}.footer-bottom,.image-caption{font-size:14px}.field-note .eyebrow{line-height:1.7}.card-top{gap:15px}.card-top span{font-size:14px}.brand>span>span{font-size:10px}}
+
+.section-label>.square-dot:last-child{margin-left:0}
