@@ -19,3 +19,5 @@ All four source pages identify the photographs as free to use under the [Unsplas
 - civil.jpg: https://images.unsplash.com/photo-1751054554594-85de2fe63e6b?auto=format&fit=crop&fm=jpg&q=78&w=1400
 
 Hero WebP derivatives: hero-solar-640.webp and hero-solar-1100.webp derive from solar.jpg; hero-power.webp derives from power.jpg. The same attribution and illustrative-use terms apply.
+
+Service explorer derivatives: explore-power.webp, explore-telecom.webp, explore-solar.webp and explore-civil.webp are cropped, compressed versions of the corresponding credited JPEGs. The same source attribution and illustrative-use notes apply.

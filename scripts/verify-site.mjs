@@ -17,19 +17,20 @@ await page.screenshot({path:'outputs/hero-desktop.png'});
 await page.screenshot({path:'outputs/home-desktop.png',fullPage:true});
 const homeTitle=await page.title();
 const imageFailures=await page.locator('img').evaluateAll(imgs=>imgs.filter(i=>!i.complete||i.naturalWidth===0).map(i=>i.src));
-await page.getByRole('button',{name:'Plan the interfaces.'}).click();
-const processWorks=await page.locator('#step-1').isVisible();
+await page.getByRole('tab',{name:'Readiness',exact:true}).click();
+const processWorks=await page.locator('#delivery-panel-1').isVisible();
 const routeResults=[];
 for(const route of ['/services','/services/power','/services/telecom','/services/solar','/services/civil','/approach','/about','/safety','/projects','/projects/site-readiness','/projects/scope-clarity','/privacy','/contact','/admin']){
  const r=await page.request.get(base+route);routeResults.push({route,status:r.status()});
 }
 await page.goto(base+'/contact?service=solar&type=vendor');
 await page.getByRole('button',{name:'Vendor / partnership'}).waitFor();
+await page.getByLabel('Project location').fill('Demo City');
+await page.getByRole('button',{name:'Continue to contact details'}).click();
 await page.getByLabel('Full name').fill('Demo Reviewer');
 await page.getByLabel('Company / organisation').fill('Example Infrastructure');
 await page.getByLabel('Business phone').fill('+91 9000000000');
 await page.getByLabel('Business email').fill('demo@example.com');
-await page.getByLabel('Project location').fill('Demo City');
 await page.getByLabel('Tell us about the work').fill('Demo enquiry to verify storage and the form experience.');
 await page.locator('input[name=consent]').check();
 const selected=await page.locator('select[name=service]').inputValue();

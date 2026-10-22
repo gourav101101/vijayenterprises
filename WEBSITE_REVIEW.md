@@ -43,3 +43,7 @@ Avoid another long pinned animation immediately below the hero, looping particle
 ## Recommended next design pass
 
 Build the service explorer and visual delivery process together. Then add approved project evidence. This would improve the whole website more than adding another effect to the hero.
+
+## Implemented after this review
+
+The interactive service explorer, visual delivery sequence, and guided enquiry are now implemented on the homepage and relevant inner pages. Approved project evidence remains outstanding because no real project records or company photographs have been supplied.

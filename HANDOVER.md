@@ -86,3 +86,11 @@ The homepage now uses an original geometric Three.js world rather than the old r
 Five chapters cover the vision, power, telecom, solar and civil. HTML chapter buttons also work by keyboard. Reduced-motion preferences and the manual motion control use a compact, manually selected scene. Failed or unavailable WebGL and JavaScript-disabled browsing retain a photo and normal service links. A skip link goes directly to all services.
 
 The light theme, larger reading sizes, system fonts and demo-data boundaries remain. Models are explanatory illustrations and do not represent completed projects. There is no claimed universal performance score; low-end real devices still require field testing.
+
+## Interactive services and guided enquiries
+
+`ServiceExplorer.tsx` and `ServiceDiagram.tsx` power the homepage and services page: keyboard-accessible service tabs, original SVG illustrations, a photography switch, scope details, and service-prefilled enquiry links. `DeliveryProcess.tsx` powers the homepage and approach page with manually selected assembly stages; CSS transitions respect reduced-motion preferences and require no additional WebGL renderer.
+
+The contact form now has project and contact steps. Native field checks apply before continuing; the existing server schema and abuse protections still apply on submission. Back navigation preserves typed fields. Service-specific brief prompts help visitors describe the work. Demo enquiries still persist to D1 without sending notifications.
+
+Run `node scripts/verify-interactions.mjs` with the local preview running to check tab selection, keyboard navigation, image loading, guided-form validation and draft retention, actual demo submission, reduced motion, and mobile layouts. The script uses local demo data.
