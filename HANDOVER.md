@@ -4,7 +4,7 @@ This is the working Energy Core concept website, using the demo contact/content 
 
 ## Included
 
-- Original WebGL ray-marched Energy Core, with pointer response, pause control, reduced-motion support, offscreen suspension and a CSS fallback.
+- Light editorial hero with responsive WebP photography, useful service links, and a brief reduced-motion-aware CSS entrance. No WebGL renderer or continuous animation loop.
 - Responsive homepage and mobile navigation.
 - Services index and four individual service pages.
 - About, approach, safety, perspectives, two field-note articles, contact and privacy pages.
@@ -44,7 +44,7 @@ If Windows' npm launcher cannot locate npm-cli.js, invoke npm directly using the
 | `app/lib/data.ts` | Default homepage copy, service descriptions, demo contacts and process content |
 | `/admin` | Edit main homepage text and contact fields; review/delete demo enquiries |
 | `app/globals.css` | Palette, typography, responsive layouts, transitions |
-| `app/components/EnergyCore.tsx` | Original shader and scene lifecycle |
+| `app/components/InfrastructureHero.tsx` | Lightweight hero composition and responsive image loading |
 | `app/components/HomeExperience.tsx` | Homepage sections and process interaction |
 | `app/components/ContactForm.tsx` | Form presentation and submission states |
 | `app/api/enquiries/route.ts` | Validation, rate limits, durable storage and cleanup |
@@ -52,7 +52,7 @@ If Windows' npm launcher cannot locate npm-cli.js, invoke npm directly using the
 | `db/schema.ts`, `drizzle/` | Database schema and generated migrations |
 | `public/images/CREDITS.md` | Image sources, photographers and usage notes |
 
-The content editor is deliberately limited to the principal copy and contact fields. Service scope and article content are maintained in source. No third-party component/template has been represented as original artwork; the hero is custom code.
+The content editor is deliberately limited to the principal copy and contact fields. Service scope and article content are maintained in source. No third-party component/template has been represented as original artwork; the hero layout is custom code.
 
 ## Demo behaviour and production boundaries
 
@@ -77,4 +77,8 @@ npm run build
 
 Browser scripts use the installed Chrome at the documented Windows path and a running preview at port 5173. They save screenshots and JSON results under ignored `outputs/`. Change the executable path for another OS. Admin tests require the local mock administrator setting above. Test data uses example.com addresses and stays in the local database.
 
-The browser checks cover route availability, WebGL initialisation, images, process selection, mobile navigation, horizontal overflow, service preselection, form persistence, origin validation, unauthorised access, CMS updates, deletion and rate limits. This is functional verification, not a complete independent accessibility or security audit.
+The browser checks cover route availability, hero image loading, images, process selection, mobile navigation, horizontal overflow, service preselection, form persistence, origin validation, unauthorised access, CMS updates, deletion and rate limits. This is functional verification, not a complete independent accessibility or security audit.
+
+## Hero performance update
+
+The homepage no longer imports the WebGL hero. Responsive WebP assets load eagerly with high priority for the main photo. The hero is rendered in the initial HTML and works without JavaScript. System fonts replace the external Google Fonts CSS request. Existing photo credits also cover the cropped WebP derivatives. No field performance score or guaranteed load time is claimed.

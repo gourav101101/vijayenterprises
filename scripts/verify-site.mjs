@@ -6,10 +6,10 @@ const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chr
 const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await page.goto(base,{waitUntil:'networkidle'});
-await page.locator('canvas.ready').waitFor({timeout:15000});
-await page.locator('canvas').scrollIntoViewIfNeeded();
+await page.locator('.hero-landscape').waitFor();
+await page.locator('.hero-landscape').scrollIntoViewIfNeeded();
 await page.waitForTimeout(500);
-await page.getByRole('button',{name:'Pause scene animation'}).click();
+
 await page.locator('img').evaluateAll(imgs=>imgs.forEach(i=>i.loading='eager'));
 await page.waitForFunction(()=>Array.from(document.images).every(i=>i.complete));
 await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
@@ -17,7 +17,7 @@ await page.screenshot({path:'outputs/hero-desktop.png'});
 await page.screenshot({path:'outputs/home-desktop.png',fullPage:true});
 const homeTitle=await page.title();
 const imageFailures=await page.locator('img').evaluateAll(imgs=>imgs.filter(i=>!i.complete||i.naturalWidth===0).map(i=>i.src));
-await page.getByRole('button',{name:'02 Plan the interfaces.'}).click();
+await page.getByRole('button',{name:'Plan the interfaces.'}).click();
 const processWorks=await page.locator('#step-1').isVisible();
 const routeResults=[];
 for(const route of ['/services','/services/power','/services/telecom','/services/solar','/services/civil','/approach','/about','/safety','/projects','/projects/site-readiness','/projects/scope-clarity','/privacy','/contact','/admin']){
@@ -41,9 +41,9 @@ const crossOrigin=await page.request.post(base+'/api/enquiries',{headers:{Origin
 const invalid=await page.request.post(base+'/api/enquiries',{headers:{Origin:base},data:{name:''}});
 await page.setViewportSize({width:390,height:844});
 await page.goto(base,{waitUntil:'networkidle'});
-await page.locator('canvas.ready').waitFor();
+await page.locator('.hero-landscape').waitFor();
 await page.waitForTimeout(500);
-await page.getByRole('button',{name:'Pause scene animation'}).click();
+
 await page.locator('img').evaluateAll(imgs=>imgs.forEach(i=>i.loading='eager'));
 await page.waitForFunction(()=>Array.from(document.images).every(i=>i.complete));
 await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));

@@ -17,3 +17,5 @@ All four source pages identify the photographs as free to use under the [Unsplas
 - solar.jpg: https://images.unsplash.com/photo-1545209575-704d1434f9cd?auto=format&fit=crop&fm=jpg&q=65&w=1400
 - telecom.jpg: https://images.unsplash.com/photo-1786130283168-040d5c08e8d7?auto=format&fit=crop&fm=jpg&q=78&w=1400
 - civil.jpg: https://images.unsplash.com/photo-1751054554594-85de2fe63e6b?auto=format&fit=crop&fm=jpg&q=78&w=1400
+
+Hero WebP derivatives: hero-solar-640.webp and hero-solar-1100.webp derive from solar.jpg; hero-power.webp derives from power.jpg. The same attribution and illustrative-use terms apply.
