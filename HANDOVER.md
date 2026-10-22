@@ -94,3 +94,9 @@ The light theme, larger reading sizes, system fonts and demo-data boundaries rem
 The contact form now has project and contact steps. Native field checks apply before continuing; the existing server schema and abuse protections still apply on submission. Back navigation preserves typed fields. Service-specific brief prompts help visitors describe the work. Demo enquiries still persist to D1 without sending notifications.
 
 Run `node scripts/verify-interactions.mjs` with the local preview running to check tab selection, keyboard navigation, image loading, guided-form validation and draft retention, actual demo submission, reduced motion, and mobile layouts. The script uses local demo data.
+
+## Client color direction
+
+The current brand palette follows the supplied references: Orange `#EC5E27`, Milk `#FDFDF1`, Forest `#064734`, and Leaf `#E0FFC2`. The site remains light. Orange anchors primary actions and the closing section; forest carries headings and selected service tabs; leaf provides active states and supporting panels. Small orange text uses a deeper shade for readability, and orange buttons use dark text.
+
+`app/brand-theme.css` is imported after the base stylesheet and owns the final brand treatment. The Three.js scene, SVG service diagrams, delivery illustration, logo accent and favicon use matching colors. Existing photography is preserved.

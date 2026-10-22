@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./brand-theme.css";
 
 export const metadata: Metadata = {
   title: { default: "Vijay Enterprises — Infrastructure. In motion.", template: "%s | Vijay Enterprises" },

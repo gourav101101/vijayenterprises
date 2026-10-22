@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Arrow } from './Icons';
 import { services } from '../lib/data';
-export function Brand() { return <a href="/" className="brand" aria-label="Vijay Enterprises home"><svg width="34" height="38" viewBox="0 0 34 38" fill="none" aria-hidden="true"><path d="m2 3 13 30h5L32 3H22l-5 16L12 3z" fill="currentColor"/><path d="M20 27h12v7H17z" fill="#ffae38"/></svg><span>VIJAY<span>ENTERPRISES</span></span></a>; }
+export function Brand() { return <a href="/" className="brand" aria-label="Vijay Enterprises home"><svg width="34" height="38" viewBox="0 0 34 38" fill="none" aria-hidden="true"><path d="m2 3 13 30h5L32 3H22l-5 16L12 3z" fill="currentColor"/><path d="M20 27h12v7H17z" fill="#EC5E27"/></svg><span>VIJAY<span>ENTERPRISES</span></span></a>; }
 export function Header({ light=false }: { light?:boolean }) {
  const [open,setOpen]=useState(false); const [scrolled,setScrolled]=useState(false);
  useEffect(()=>{const onScroll=()=>setScrolled(window.scrollY>30);window.addEventListener('scroll',onScroll,{passive:true});onScroll();return()=>window.removeEventListener('scroll',onScroll);},[]);

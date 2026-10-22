@@ -4,16 +4,16 @@ export function createWorld(canvas:HTMLCanvasElement, onFailure:()=>void) {
  const renderer=new T.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'low-power'});
  renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.35));
  renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;
- renderer.setClearColor(0xfaf9f5,0);renderer.outputColorSpace=T.SRGBColorSpace;
- renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.3;
+ renderer.setClearColor(0xfdfdf1,0);renderer.outputColorSpace=T.SRGBColorSpace;
+ renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;
  const scene=new T.Scene();const camera=new T.PerspectiveCamera(34,1,.1,100);
  scene.add(new T.HemisphereLight(0xffffff,0xa9ad94,2.5));
- const sun=new T.DirectionalLight(0xfff4dc,4);sun.position.set(-5,10,6);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.camera.left=-7;sun.shadow.camera.right=7;sun.shadow.camera.top=7;sun.shadow.camera.bottom=-7;sun.shadow.normalBias=.035;scene.add(sun);
+ const sun=new T.DirectionalLight(0xfffdf1,4);sun.position.set(-5,10,6);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.camera.left=-7;sun.shadow.camera.right=7;sun.shadow.camera.top=7;sun.shadow.camera.bottom=-7;sun.shadow.normalBias=.035;scene.add(sun);
  const fill=new T.DirectionalLight(0xd8e8ff,2);fill.position.set(6,4,-4);scene.add(fill);
  const world=new T.Group();scene.add(world);
  const materials: T.MeshStandardMaterial[]=[];
  const mat=(color:number,metalness=0,roughness=.6)=>{const m=new T.MeshStandardMaterial({color,metalness,roughness});materials.push(m);return m};
- const white=mat(0xf4f0e5),concrete=mat(0xc5c8b7),steel=mat(0x879b99,.65,.3),amber=mat(0xeb9a26,.35,.35),blue=mat(0x244f66,.45,.25),grass=mat(0xa2b58d),road=mat(0xd3d4c7),dark=mat(0x344c48,.25),leaf=mat(0x738b61);
+ const white=mat(0xfdfdf1),concrete=mat(0xb3d599),steel=mat(0x39745b,.65,.3),amber=mat(0xec5e27,.35,.35),blue=mat(0x064734,.45,.25),grass=mat(0xb5df8f),road=mat(0xd9ecc7),dark=mat(0x093e2c,.25),leaf=mat(0x3f8d4d);
  const boxGeo=new T.BoxGeometry(1,1,1),barGeo=new T.CylinderGeometry(1,1,1,6);
  function box(parent:T.Object3D,x:number,y:number,z:number,w:number,h:number,d:number,m:T.Material){const mesh=new T.Mesh(boxGeo,m);mesh.position.set(x,y,z);mesh.scale.set(w,h,d);mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);return mesh}
  function bar(parent:T.Object3D,a:number[],b:number[],r:number,m:T.Material){const av=new T.Vector3(...a),bv=new T.Vector3(...b),delta=bv.clone().sub(av);const mesh=new T.Mesh(barGeo,m);mesh.position.copy(av.add(bv).multiplyScalar(.5));mesh.scale.set(r,delta.length(),r);mesh.quaternion.setFromUnitVectors(new T.Vector3(0,1,0),delta.normalize());mesh.castShadow=true;parent.add(mesh);return mesh}
