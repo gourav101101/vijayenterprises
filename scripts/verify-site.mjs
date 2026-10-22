@@ -6,8 +6,8 @@ const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chr
 const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await page.goto(base,{waitUntil:'networkidle'});
-await page.locator('.hero-landscape').waitFor();
-await page.locator('.hero-landscape').scrollIntoViewIfNeeded();
+await page.locator('.world-ready').waitFor();
+await page.locator('.world-ready').scrollIntoViewIfNeeded();
 await page.waitForTimeout(500);
 
 await page.locator('img').evaluateAll(imgs=>imgs.forEach(i=>i.loading='eager'));
@@ -41,7 +41,7 @@ const crossOrigin=await page.request.post(base+'/api/enquiries',{headers:{Origin
 const invalid=await page.request.post(base+'/api/enquiries',{headers:{Origin:base},data:{name:''}});
 await page.setViewportSize({width:390,height:844});
 await page.goto(base,{waitUntil:'networkidle'});
-await page.locator('.hero-landscape').waitFor();
+await page.locator('.world-ready').waitFor();
 await page.waitForTimeout(500);
 
 await page.locator('img').evaluateAll(imgs=>imgs.forEach(i=>i.loading='eager'));

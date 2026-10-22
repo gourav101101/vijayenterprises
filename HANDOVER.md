@@ -4,7 +4,7 @@ This is the working Energy Core concept website, using the demo contact/content 
 
 ## Included
 
-- Light editorial hero with responsive WebP photography, useful service links, and a brief reduced-motion-aware CSS entrance. No WebGL renderer or continuous animation loop.
+- Original Three.js infrastructure world with five scroll chapters, camera transitions, blueprint view, reduced-motion controls, and a photographic fallback.
 - Responsive homepage and mobile navigation.
 - Services index and four individual service pages.
 - About, approach, safety, perspectives, two field-note articles, contact and privacy pages.
@@ -44,7 +44,7 @@ If Windows' npm launcher cannot locate npm-cli.js, invoke npm directly using the
 | `app/lib/data.ts` | Default homepage copy, service descriptions, demo contacts and process content |
 | `/admin` | Edit main homepage text and contact fields; review/delete demo enquiries |
 | `app/globals.css` | Palette, typography, responsive layouts, transitions |
-| `app/components/InfrastructureHero.tsx` | Lightweight hero composition and responsive image loading |
+| `app/components/ScrollWorld.tsx`, `infrastructure-world.ts` | Scroll chapters, scene geometry, camera and rendering lifecycle |
 | `app/components/HomeExperience.tsx` | Homepage sections and process interaction |
 | `app/components/ContactForm.tsx` | Form presentation and submission states |
 | `app/api/enquiries/route.ts` | Validation, rate limits, durable storage and cleanup |
@@ -79,6 +79,10 @@ Browser scripts use the installed Chrome at the documented Windows path and a ru
 
 The browser checks cover route availability, hero image loading, images, process selection, mobile navigation, horizontal overflow, service preselection, form persistence, origin validation, unauthorised access, CMS updates, deletion and rate limits. This is functional verification, not a complete independent accessibility or security audit.
 
-## Hero performance update
+## Scroll-driven 3D update
 
-The homepage no longer imports the WebGL hero. Responsive WebP assets load eagerly with high priority for the main photo. The hero is rendered in the initial HTML and works without JavaScript. System fonts replace the external Google Fonts CSS request. Existing photo credits also cover the cropped WebP derivatives. No field performance score or guaranteed load time is claimed.
+The homepage now uses an original geometric Three.js world rather than the old ray-marched Energy Core. Three.js loads in a separate dynamic chunk. There are no downloaded model or environment-map assets. Camera rendering is requested on scroll or interaction and stops after interpolation settles. DPR is capped at 1.35; shadows use a 1024px map. Canvas work is suspended offscreen.
+
+Five chapters cover the vision, power, telecom, solar and civil. HTML chapter buttons also work by keyboard. Reduced-motion preferences and the manual motion control use a compact, manually selected scene. Failed or unavailable WebGL and JavaScript-disabled browsing retain a photo and normal service links. A skip link goes directly to all services.
+
+The light theme, larger reading sizes, system fonts and demo-data boundaries remain. Models are explanatory illustrations and do not represent completed projects. There is no claimed universal performance score; low-end real devices still require field testing.

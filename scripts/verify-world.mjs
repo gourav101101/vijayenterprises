@@ -1,0 +1,18 @@
+﻿import {chromium} from '@playwright/test';
+import fs from 'node:fs';
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const base='http://127.0.0.1:5173';
+try{
+ const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(base);await page.locator('.world-ready').waitFor({timeout:30000});
+ const chapters=[];
+ for(const name of ['Power','Telecom','Solar','Civil']){await page.getByRole('button',{name,exact:true}).click();await page.waitForTimeout(1700);const state=await page.getByRole('button',{name,exact:true}).getAttribute('aria-current');if(state!=='step')throw Error('Chapter failed: '+name);chapters.push({name,progress:await page.locator('canvas').getAttribute('data-progress')});}
+ await page.waitForTimeout(1700);const before=await page.locator('canvas').getAttribute('data-renders');await page.waitForTimeout(700);const after=await page.locator('canvas').getAttribute('data-renders');if(before!==after)throw Error('Scene keeps rendering while idle');
+ await page.getByRole('button',{name:'Blueprint view'}).click();await page.getByRole('button',{name:'Solid view'}).waitFor();await page.screenshot({path:'outputs/world-blueprint.png'});await page.getByRole('button',{name:'Solid view'}).click();
+ await page.getByRole('button',{name:'Reduce motion'}).click();await page.locator('.world-static').waitFor();await page.getByRole('button',{name:'Solar',exact:true}).click();await page.waitForTimeout(300);if(await page.getByRole('button',{name:'Solar',exact:true}).getAttribute('aria-current')!=='step')throw Error('Manual chapter failed');
+ await page.getByRole('link',{name:'Skip to all services'}).click();await page.waitForTimeout(800);if(!await page.locator('#expertise').isVisible())throw Error('Skip failed');
+ const layouts=[];for(const width of [1440,768,390,360]){await page.setViewportSize({width,height:844});await page.goto(base);await page.locator('.world-ready').waitFor();await page.waitForTimeout(500);const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);if(overflow)throw Error('Overflow '+width);layouts.push({width,overflow});await page.screenshot({path:`outputs/world-verified-${width}.png`});}
+ await page.emulateMedia({reducedMotion:'reduce'});await page.reload();await page.locator('.world-static').waitFor();await page.getByRole('button',{name:'Telecom',exact:true}).click();await page.waitForTimeout(250);if(await page.getByRole('button',{name:'Telecom',exact:true}).getAttribute('aria-current')!=='step')throw Error('Reduced-motion selection failed');
+ const fallback=await browser.newPage();await fallback.addInitScript(()=>{const original=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(type,...args){if(type.includes('webgl'))return null;return original.call(this,type,...args)}});await fallback.goto(base);await fallback.locator('.world-static').waitFor();if(!await fallback.locator('.world-fallback').isVisible())throw Error('WebGL fallback absent');
+ const nojs=await browser.newContext({javaScriptEnabled:false});const plain=await nojs.newPage();await plain.goto(base);if(!await plain.locator('.world-fallback').isVisible())throw Error('No-JS fallback absent');
+ if(errors.length)throw Error(errors.join('\n'));const report={chapters,idleRendersStopped:before===after,blueprint:true,manualChapters:true,skip:true,layouts,reducedMotion:true,webglFallback:true,noJsFallback:true,errors};fs.writeFileSync('outputs/world-verification.json',JSON.stringify(report,null,2));console.log(report);
+}finally{await browser.close()}
