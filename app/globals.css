@@ -120,3 +120,14 @@ body{font-size:17px}
 @media(max-width:380px){.world-copy{top:105px}.world-copy h1{font-size:38px}.world-copy p{font-size:13px}.world-skip{position:static;margin-top:12px}.world-stage{height:38%}.world-bottom nav button{font-size:11px;padding:10px 8px}}
 @media(prefers-reduced-motion:reduce){.scroll-world{height:100svh;min-height:760px}.world-sticky{position:relative;min-height:760px}.world-progress{display:none}}
 @media(min-width:761px) and (max-width:1100px){.world-copy h1{font-size:clamp(40px,5.2vw,57px)}.world-copy p{font-size:15px;max-width:320px}.world-copy .button{font-size:14px;gap:18px}}
+
+/* Review refinements: less duplicate copy and usable short-screen navigation. */
+.scroll-world{height:360svh}.world-bottom nav{margin-left:auto;margin-right:0}
+.world-model-caption{bottom:6%;font-size:12px;color:#65705d}
+@media(max-width:760px){.scroll-world{height:320svh}.world-copy h1{margin-top:0}.world-bottom nav{margin:0}.world-model-caption{bottom:4%;font-size:11px}}
+.world-static{height:100svh;min-height:750px}
+@media(max-width:760px) and (max-height:740px){.world-sticky{height:100svh;min-height:0}.world-copy{top:100px}.world-copy h1{font-size:35px;margin:10px 0 15px}.world-copy .eyebrow{font-size:10px}.world-copy p{font-size:14px;line-height:1.5;margin-bottom:16px}.world-copy .button{font-size:12px;padding:11px 14px}.world-skip{position:absolute;right:0;bottom:10px;font-size:11px;margin:0;gap:4px}.world-stage{height:40%;bottom:72px}.world-controls{top:0}.world-controls button{font-size:10px}.world-model-caption{bottom:1%}}
+@media(max-height:540px){.scroll-world,.world-static{height:700px;min-height:700px}.world-sticky,.world-static .world-sticky{position:relative;height:700px;min-height:700px}.world-copy{top:150px}.world-stage{top:100px;height:490px;bottom:auto}}
+@media(prefers-reduced-motion:reduce){.scroll-world{height:100svh;min-height:750px}.world-sticky{position:relative}}
+@media(max-width:760px){.world-skip{position:static;margin-top:10px;font-size:12px;width:max-content}.world-controls{top:12px}}
+@media(max-width:760px) and (max-height:740px){.world-skip{margin-top:8px;font-size:11px}.world-stage{height:38%}.world-controls{top:12px}}
