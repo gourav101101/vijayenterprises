@@ -132,6 +132,15 @@ body{font-size:17px}
 @media(max-width:760px){.world-skip{position:static;margin-top:10px;font-size:12px;width:max-content}.world-controls{top:12px}}
 @media(max-width:760px) and (max-height:740px){.world-skip{margin-top:8px;font-size:11px}.world-stage{height:38%}.world-controls{top:12px}}
 
+/* Reserve space for chapter navigation, including longer three-line headings. */
+@media(min-width:761px){
+ .world-copy{top:110px;bottom:112px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+ .world-copy h1{font-size:clamp(40px,min(5.8vw,10svh),110px);margin:20px 0}
+ .world-copy p{margin-top:0;margin-bottom:24px}
+ .world-copy .button{flex-shrink:0;max-width:100%}
+ .world-skip{flex-shrink:0;margin-top:16px}
+}
+
 /* Interactive expertise: one clear view, with a useful next action. */
 .service-explorer{border:1px solid #d7dfce;border-radius:14px;overflow:hidden;background:#fff}
 .explorer-tabs{display:grid;grid-template-columns:repeat(4,1fr);background:#f0f3e9;border-bottom:1px solid #d7dfce}
