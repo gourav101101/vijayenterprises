@@ -5,7 +5,7 @@ import type { SiteContent } from '../lib/data';
 import type { createWorld } from './infrastructure-world';
 
 const chapters=[
- {label:'The vision',title:'Infrastructure.\nIn motion.',text:'Power. Telecom. Solar. Civil.\nA connected world, built from the ground up.',link:'/contact',cta:'Let’s build what’s next',word:'CONNECTED'},
+ {label:'The vision',title:'Infrastructure.\nIn motion.',text:'Power. Telecom. Solar. Civil.\nA connected world, built from the ground up.',link:'/contact',cta:'Discuss your project',word:'CONNECTED'},
  {label:'Power',title:'Potential.\nPut to work.',text:'Electrical installation support, coordinated around your site and scope.',link:'/services/power',cta:'Explore power infrastructure',word:'ENERGISED'},
  {label:'Telecom',title:'Every signal.\nStarts here.',text:'Site power and installation support for telecom rollout teams.',link:'/services/telecom',cta:'Explore telecom site power',word:'CONNECTED'},
  {label:'Solar',title:'A brighter idea.\nBuilt to last.',text:'Solar installation and site execution support for EPC project teams.',link:'/services/solar',cta:'Explore solar installation',word:'RENEWED'},

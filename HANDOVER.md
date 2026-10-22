@@ -100,3 +100,11 @@ Run `node scripts/verify-interactions.mjs` with the local preview running to che
 The current brand palette follows the supplied references: Orange `#EC5E27`, Milk `#FDFDF1`, Forest `#064734`, and Leaf `#E0FFC2`. The site remains light. Orange anchors primary actions and the closing section; forest carries headings and selected service tabs; leaf provides active states and supporting panels. Small orange text uses a deeper shade for readability, and orange buttons use dark text.
 
 `app/brand-theme.css` is imported after the base stylesheet and owns the final brand treatment. The Three.js scene, SVG service diagrams, delivery illustration, logo accent and favicon use matching colors. Existing photography is preserved.
+
+## Homepage conversion and showcase update
+
+The scroll journey is shortened to 240svh on desktop and 220svh on mobile. Reduced-motion and short-screen static modes remain. Navigation, the opening hero, footer and closing section now use the explicit action “Discuss your project.” The site-location section reads `content.region`; while regions remain unconfirmed, it asks visitors to supply a location without claiming coverage.
+
+`app/components/ProjectShowcase.tsx` contains three clearly labelled illustrative work packages. Each includes scope, an expandable brief checklist and a service-prefilled enquiry link. Replace these examples with approved project photos, location, delivered scope and verified outcomes when supplied. Do not present the current examples as completed work. Testimonials, client logos and certification badges are intentionally omitted until genuine approved material is available.
+
+Image entrances and section-rule animations use IntersectionObserver and CSS, with reduced-motion support and no new animation dependencies. Images remain visible without JavaScript. Style additions are in `app/brand-theme.css`.
